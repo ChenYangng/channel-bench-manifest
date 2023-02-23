@@ -12,7 +12,7 @@
 -->
 <manifest>
   <!-- Use the 'master' branch/tag for all repositories by default -->
-  <default revision="master" remote="seL4" />
+  <default revision="loongarch" remote="ChenYangng" />
 
   <!-- include all the common repositories, we just want to define the kernel -->
   <include name="common.xml"/>

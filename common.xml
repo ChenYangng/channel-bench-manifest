@@ -11,33 +11,41 @@
      @TAG(DATA61_BSD)
 -->
 <manifest>
-  <!-- Remote repository collections -->
-  <remote fetch="../seL4" name="seL4" />
-  <remote fetch="../sel4proj" name="sel4proj"/>
-  <remote fetch="https://github.com/nanopb" name="nanopb" />
-
-  <!-- Kernel -->
-  <project name="seL4.git" path="kernel"/>
-
-  <!-- Build system and build tools -->
-  <project name="seL4_tools.git" path="tools/seL4">
+  <remote name="nanopb" fetch="https://github.com/nanopb"/>
+  <remote name="opensbi" fetch="https://github.com/riscv"/>
+  <remote name="seL4" fetch="https://github.com/seL4"/>
+  <remote name="ChenYangng" fetch="."/>
+  <remote name="sel4proj" fetch="https://github.com/sel4proj"/>
+  <remote name="foxsen" fetch="https://github.com/foxsen"/>
+  
+  <default remote="ChenYangng" revision="loongarch"/>
+  
+  <project name="musllibc.git" path="projects/musllibc" upstream="loongarch" dest-branch="loongarch"/>
+  <project name="nanopb" path="tools/nanopb" remote="nanopb" revision="1466e6f953835b191a7f5acf0c06c941d4cd33d9" upstream="master" dest-branch="refs/tags/0.4.3"/>
+  <project name="opensbi" path="tools/opensbi" remote="opensbi" revision="a98258d0b537a295f517bbc8d813007336731fa9" upstream="refs/tags/v0.8" dest-branch="refs/tags/v0.8"/>
+  <project name="seL4.git" path="kernel" revision="loongarch" upstream="loongarch" dest-branch="loongarch"/>
+  <project name="seL4_libs.git" path="projects/seL4_libs" revision="loongarch" upstream="loongarch" dest-branch="loongarch"/>
+  <project name="seL4_tools.git" path="tools/seL4" revision="loongarch" upstream="loongarch" dest-branch="loongarch">
     <linkfile src="cmake-tool/init-build.sh" dest="init-build.sh"/>
     <linkfile src="cmake-tool/griddle" dest="griddle"/>
   </project>
+  <project name="sel4_projects_libs" path="projects/sel4_projects_libs" remote="seL4" revision="f376e0b907090802729b5468d80ccd8d97a83f5a" upstream="master" dest-branch="master"/>
+  <project name="sel4runtime.git" path="projects/sel4runtime" revision="loongarch" upstream="loongarch" dest-branch="loongarch"/>
+  <project name="util_libs.git" path="projects/util_libs" revision="loongarch" upstream="loongarch" dest-branch="loongarch"/>
+  <project name="seL4-Loongarch.git" path="tools/seL4-Loongarch" revision="main" upstream="main" dest-branch="main">
+    <linkfile src="build.sh" dest="build.sh"/>
+    <linkfile src="run_debug.sh" dest="run_debug.sh"/>
+  </project>
+  <project name="qemu-loongarch-runenv.git" path="tools/qemu-loongarch-runenv" remote="foxsen" revision="main" upstream="main" dest-branch="main"/>
+  
   <project name="channel-bench-tools.git" path="tools/channel-bench" remote="sel4proj"/>
 
-  <!-- C runtime -->
-  <project name="sel4runtime.git" remote="sel4proj" path="projects/sel4runtime"/>
-  <project name="musllibc.git" path="projects/musllibc" revision="sel4"/>
 
-  <!-- Shared libraries for seL4 & sel4proj projects -->
-  <project name="seL4_libs.git" path="projects/seL4_libs"/>
-  <project name="util_libs.git" path="projects/util_libs"/>
-  <project name="sel4bench.git" path="projects/sel4bench"/>
-  <project name="sel4_projects_libs" path="projects/sel4_projects_libs" remote="sel4proj" />
+  <project name="sel4bench.git" path="projects/sel4bench" remote="seL4" revision="master"/>
+
 
   <!-- Primary project for this manifest -->
-  <project remote="sel4proj" name="channel-bench.git" path="projects/channel-bench">
+  <project name="channel-bench.git" path="projects/channel-bench">
     <!-- Project-specific settings -->
     <linkfile src="easy-settings.cmake" dest="easy-settings.cmake"/>
   </project>

@@ -11,6 +11,7 @@
      @TAG(DATA61_BSD)
 -->
 <manifest>
+  <default remote="ChenYangng" revision="loongarch"/>
   <!-- include all the common repositories, we just want to define the kernel -->
   <include name="common.xml"/>
 </manifest>

@@ -16,12 +16,12 @@
   <remote name="sel4proj" fetch="https://github.com/sel4proj"/>
   <remote name="ChenYangng" fetch="."/>
   <remote name="foxsen" fetch="https://github.com/foxsen"/>
-  
+
   <!-- Kernel -->
-  <project name="seL4.git" path="kernel"/>
+  <project name="seL4.git" path="kernel" revision="320"/>
 
   <!-- Build system and build tools -->
-  <project name="seL4_tools.git" path="tools/seL4">
+  <project name="seL4_tools.git" path="tools/seL4" revision="320">
     <linkfile src="cmake-tool/init-build.sh" dest="init-build.sh"/>
     <linkfile src="cmake-tool/griddle" dest="griddle"/>
   </project>
